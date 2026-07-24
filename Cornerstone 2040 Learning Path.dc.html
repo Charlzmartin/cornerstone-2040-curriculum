@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#F6F5F2;}
+  a{color:#2E6CB4;}
+  a:hover{color:#0A2A4D;}
+  ::selection{background:#D8DDE3;}
+</style>
+</helmet>
+
+<div style="font-family:'Montserrat',sans-serif;color:#1C2530;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- Header -->
+  <div style="position:sticky;top:0;z-index:20;background:#0A2A4D;box-shadow:0 2px 12px rgba(10,42,77,0.18);">
+    <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+      <div style="display:flex;align-items:center;gap:14px;cursor:pointer;" onClick="{{ goHome }}">
+        <div style="width:44px;height:44px;flex:none;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <img src="./assets/cornerstone-logo.png" alt="Cornerstone Fellowship Church logo" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;line-height:1;color:#FFFFFF;letter-spacing:0.3px;">CORNERSTONE <span style="color:#7CA9DD;">2040</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:#B9C4D4;margin-top:3px;">A Learning Path for Adult Disciples</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;min-width:180px;">
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#B9C4D4;margin-bottom:4px;"><span>PROGRESS</span><span>{{ completedCount }}/{{ totalCount }}</span></div>
+          <div style="height:6px;background:rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;">
+            <div style="height:100%;background:#7CA9DD;border-radius:4px;width:{{ progressPct }}%;transition:width .4s ease;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME VIEW -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1180px;margin:0 auto;padding:48px 32px 90px;flex:1;width:100%;box-sizing:border-box;">
+
+      <div style="max-width:720px;margin-bottom:16px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#2E6CB4;font-size:16px;margin-bottom:10px;">Rooted in Cornerstone 2040</div>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:44px;line-height:1.1;color:#0A2A4D;margin:0 0 18px;">Nineteen sessions to root your walk in Christ.</h1>
+        <p style="font-size:16.5px;line-height:1.7;color:#3E4A57;margin:0;">This curriculum walks through <em>Cornerstone 2040</em> chapter by chapter &mdash; the church&rsquo;s pastoral vision for a Christ-centered future. Each session is built for a full hour together: an opening question, teaching content, Scripture and discussion, and a closing application and prayer &mdash; whether you&rsquo;re studying alone or leading a group.</p>
+      </div>
+
+      <div style="max-width:720px;margin-bottom:44px;padding:16px 20px;background:#EFF3F8;border-radius:8px;font-size:13.5px;line-height:1.6;color:#3E4A57;">
+        <strong style="color:#0A2A4D;">How to use this:</strong> This page is a self-contained study &mdash; open it from any browser, on desktop or phone, no login required. Share the link with your class or small group so everyone studies from the same page; each person&rsquo;s own completion progress saves privately on their own device. Leaders can toggle the Leader Notes panel on each session from the Tweaks controls when preparing to teach.
+      </div>
+
+      <sc-for list="{{ units }}" as="unit" hint-placeholder-count="6">
+        <div style="margin-bottom:40px;">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:18px;border-bottom:1px solid #D8DDE3;padding-bottom:10px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#8E8B84;">UNIT {{ unit.num }}</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#0A2A4D;">{{ unit.name }}</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+            <sc-for list="{{ unit.sessions }}" as="s" hint-placeholder-count="4">
+              <div style="background:#FFFFFF;border:1px solid #E4E2DC;border-radius:10px;padding:20px;cursor:pointer;transition:box-shadow .2s,transform .2s;" style-hover="box-shadow:0 8px 22px rgba(10,42,77,0.12);transform:translateY(-2px);" onClick="{{ s.open }}">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#2E6CB4;">CHAPTER {{ s.chapter }}</div>
+                  <sc-if value="{{ s.done }}" hint-placeholder-val="{{ false }}">
+                    <div style="width:20px;height:20px;border-radius:50%;background:#2E6CB4;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none;">✓</div>
+                  </sc-if>
+                </div>
+                <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:#0A2A4D;line-height:1.25;margin-bottom:8px;">{{ s.title }}</div>
+                <div style="font-size:12.5px;color:#8E8B84;font-style:italic;">{{ s.verseRef }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- SESSION VIEW -->
+  <sc-if value="{{ isSession }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:840px;margin:0 auto;padding:40px 32px 100px;flex:1;width:100%;box-sizing:border-box;">
+
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#8E8B84;margin-bottom:22px;">
+        <span style="cursor:pointer;color:#2E6CB4;" onClick="{{ goHome }}">All Sessions</span>
+        <span>/</span>
+        <span>{{ currentSession.unitName }}</span>
+      </div>
+
+      <div style="margin-bottom:22px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;color:#2E6CB4;letter-spacing:0.5px;margin-bottom:8px;">CHAPTER {{ currentSession.chapter }} &middot; SESSION {{ currentSession.num }} OF {{ totalCount }}</div>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin:0 0 16px;line-height:1.15;">{{ currentSession.title }}</h1>
+        <blockquote style="margin:0;padding:16px 22px;background:#EFF3F8;border-left:3px solid #2E6CB4;border-radius:0 8px 8px 0;">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#0A2A4D;line-height:1.5;">&ldquo;{{ currentSession.verseText }}&rdquo;</div>
+          <div style="font-size:13px;color:#5A6470;margin-top:8px;">&mdash; {{ currentSession.verseRef }}</div>
+        </blockquote>
+      </div>
+
+      <div style="display:flex;gap:0;flex-wrap:wrap;margin-bottom:32px;border:1px solid #E4E2DC;border-radius:10px;overflow:hidden;">
+        <div style="flex:1;min-width:140px;padding:12px 16px;text-align:center;border-right:1px solid #E4E2DC;background:#FBFAF8;">
+          <div style="font-size:11px;color:#8E8B84;letter-spacing:0.5px;">OPENING</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#0A2A4D;">5 min</div>
+        </div>
+        <div style="flex:1;min-width:140px;padding:12px 16px;text-align:center;border-right:1px solid #E4E2DC;background:#FBFAF8;">
+          <div style="font-size:11px;color:#8E8B84;letter-spacing:0.5px;">TEACHING</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#0A2A4D;">15 min</div>
+        </div>
+        <div style="flex:1;min-width:140px;padding:12px 16px;text-align:center;border-right:1px solid #E4E2DC;background:#FBFAF8;">
+          <div style="font-size:11px;color:#8E8B84;letter-spacing:0.5px;">SCRIPTURE &amp; DISCUSSION</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#0A2A4D;">25 min</div>
+        </div>
+        <div style="flex:1;min-width:140px;padding:12px 16px;text-align:center;background:#FBFAF8;">
+          <div style="font-size:11px;color:#8E8B84;letter-spacing:0.5px;">APPLICATION &amp; PRAYER</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#0A2A4D;">15 min</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:30px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E8B84;margin-bottom:8px;">OPENING QUESTION</div>
+        <p style="font-size:16px;line-height:1.7;color:#1C2530;margin:0;font-style:italic;">{{ currentSession.icebreaker }}</p>
+      </div>
+
+      <div style="margin-bottom:30px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E8B84;margin-bottom:8px;">THE BIG IDEA</div>
+        <p style="font-size:17px;line-height:1.7;color:#1C2530;margin:0;font-weight:600;">{{ currentSession.bigIdea }}</p>
+      </div>
+
+      <div style="margin-bottom:30px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E8B84;margin-bottom:8px;">TEACHING CONTENT</div>
+        <p style="font-size:15.5px;line-height:1.75;color:#3E4A57;margin:0;">{{ currentSession.teaching }}</p>
+      </div>
+
+      <div style="margin-bottom:30px;background:#FFFFFF;border:1px solid #E4E2DC;border-radius:10px;padding:22px 24px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E8B84;margin-bottom:10px;">SCRIPTURE FOCUS</div>
+        <p style="font-size:15px;line-height:1.6;color:#3E4A57;margin:0 0 14px;">Read <strong>{{ currentSession.verseRef }}</strong> together, then read further in <strong>{{ currentSession.readFurther }}</strong> for fuller context before discussing.</p>
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E8B84;margin:18px 0 10px;">DISCUSSION QUESTIONS</div>
+        <sc-for list="{{ currentSession.questions }}" as="q" hint-placeholder-count="5">
+          <div style="display:flex;gap:10px;margin-bottom:12px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:15px;flex:none;">{{ q.n }}.</div>
+            <div style="font-size:15px;line-height:1.6;color:#1C2530;">{{ q.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-bottom:24px;background:#0A2A4D;border-radius:10px;padding:22px 24px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#7CA9DD;margin-bottom:10px;">THIS WEEK&rsquo;S APPLICATION</div>
+        <p style="font-size:16px;line-height:1.65;color:#FFFFFF;margin:0;">{{ currentSession.application }}</p>
+      </div>
+
+      <div style="margin-bottom:36px;background:#EFF3F8;border-radius:10px;padding:22px 24px;">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#2E6CB4;margin-bottom:10px;">CLOSING PRAYER PROMPT</div>
+        <p style="font-size:15.5px;line-height:1.65;color:#1C2530;margin:0;font-style:italic;">{{ currentSession.closingPrayer }}</p>
+      </div>
+
+      <sc-if value="{{ showLeaderNotes }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-bottom:36px;border:1px dashed #B7A98F;border-radius:10px;padding:20px 24px;background:#FBF8F2;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div style="font-size:12.5px;font-weight:600;letter-spacing:1px;color:#8E6F3E;">LEADER NOTES</div>
+          </div>
+          <sc-for list="{{ currentSession.leaderNotes }}" as="n" hint-placeholder-count="2">
+            <div style="font-size:14.5px;line-height:1.6;color:#5A4E38;margin-bottom:8px;">&bull; {{ n }}</div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid #E4E2DC;">
+        <div style="cursor:pointer;font-size:14px;color:{{ prevColor }};font-weight:600;" onClick="{{ goPrev }}">&larr; Previous</div>
+        <div onClick="{{ toggleComplete }}" style="cursor:pointer;padding:12px 26px;border-radius:30px;font-size:14.5px;font-weight:600;background:{{ completeBg }};color:{{ completeColor }};border:1.5px solid #2E6CB4;transition:all .15s;">{{ completeLabel }}</div>
+        <div style="cursor:pointer;font-size:14px;color:{{ nextColor }};font-weight:600;" onClick="{{ goNext }}">Next &rarr;</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="background:#0A2A4D;padding:22px 32px;text-align:center;font-size:12.5px;color:#7C8AA0;">
+    Built for Cornerstone Fellowship Church &middot; adapted from <em style="font-family:'Cormorant Garamond',serif;">Cornerstone 2040: A Pastoral Vision for a Christ-Centered Future</em>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900},&quot;showLeaderNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;}}">
+
+const SESSIONS = [
+{chapter:1,unit:1,title:"A Steward's Declaration",verseRef:"Psalm 127:1",verseText:"Unless the Lord builds the house, the builders labor in vain.",icebreaker:"Describe something valuable someone once trusted you to take care of. What made that responsibility feel weighty?",bigIdea:"Cornerstone belongs to Jesus, not to any pastor, founder, or generation. We are not owners of what Christ has entrusted to us — we are stewards, and stewardship reaches beyond money into doctrine, relationships, influence, and culture.",teaching:"For thirty years, Cornerstone has walked through joy and sorrow, growth and struggle — not because of unusual human wisdom, but because the Lord has been faithful. Jesus purchased His Church with His blood; He is its Head, Chief Shepherd, and Cornerstone. An owner does what he wants with what belongs to him. A steward cares for what belongs to another and uses it according to the owner's desires. That reframes how we hold doctrine, relationships, influence, and opportunity — every decision says something about what we believe belongs at the center. This chapter isn't written to control the future; it's written to pass on convictions, not preferences, so whoever leads next holds tightly to Christ, Scripture, discipleship, love, and mission.",readFurther:"1 Corinthians 4:1-2",questions:["What does it change to see yourself as a steward rather than an owner of your role, gifts, or ministry?","Where do you treat something entrusted to you — time, family, a ministry — as though it belongs to you alone?","What would change if the next generation inherited only what is truly yours to give?","Read the phrase \"Jesus does not belong to Cornerstone; Cornerstone belongs to Jesus\" aloud. What changes in a church that truly believes that?","What is one tradition or method here that future generations may need to release without losing the mission?"],application:"Identify one area of life you've been \"owning\" instead of stewarding, and surrender it to Christ in prayer this week.",closingPrayer:"Thank God for His faithfulness at Cornerstone across the years, and ask Him to help you hold your own responsibilities with open hands this week.",leaderNotes:["Draw out that stewardship is broader than finances — it covers doctrine, relationships, influence, and the culture we pass on.","Watch for pride disguised as ownership (\"my ministry,\" \"my class\") and gently redirect to Christ as owner."]},
+{chapter:2,unit:1,title:"The Cornerstone Identity",verseRef:"1 Peter 2:5",verseText:"You also, like living stones, are being built into a spiritual house to be a holy priesthood.",icebreaker:"When you think of \"church,\" what image or memory comes to mind first — and does it point to Christ or to something else?",bigIdea:"Our identity cannot rest on a pastor, worship style, or shared history — it is found in Jesus Christ alone. Cornerstone is a family of disciples, students of the Word, servants, and multipliers, because Christ is our treasure.",teaching:"Cornerstone's identity isn't found in a pastor, worship style, or shared history — those things tell our story, but they can't carry its weight. We are a spiritual family of passionate followers of Jesus, redeemed by grace, united by the Gospel, empowered by the Spirit. Because Jesus is our Cornerstone, we take His Word seriously as our foundation, understand discipleship as a lifelong process rather than a class, and see ourselves as family, servants, generous givers, and multipliers who invest in every generation. It's possible to love church activities and lose sight of Christ; the songs, the programs, even the relationships are gifts, but the Giver must remain the treasure.",readFurther:"1 Peter 2:4-10",questions:["Which identity marker (style, program, history) are you most tempted to treasure above Christ?","How does being called a \"living stone\" change how you see other members of this church?","What does church activity that looks spiritual but misses genuine obedience look like in your own life?","Which of Cornerstone's identity marks — treasuring Christ, the Word, discipleship, family, servanthood, generosity, multiplying — do you see most clearly in your own life? Which is missing?","How would a visitor know Cornerstone's identity is Christ, and not just \"a nice church,\" after one visit?"],application:"Choose one identity mark of Cornerstone you want to grow in this month, and name a concrete way to practice it.",closingPrayer:"Ask God to make Christ, not habit or nostalgia, the center of your affection this week.",leaderNotes:["Watch for members equating nostalgia or preference with identity; keep returning the group to Christ as the center.","This is a good session to introduce newer attenders to the church's self-understanding."]},
+{chapter:3,unit:1,title:"Our Mission",verseRef:"John 20:21",verseText:"As the Father has sent me, I am sending you.",icebreaker:"Who first said \"come go with me\" to you — the person who invited you toward Jesus or into this church?",bigIdea:"Cornerstone exists to glorify God by helping people know, trust, and follow Jesus Christ — and lead others to do the same. Every ministry should be tested by one question: does this help someone take their next faithful step with Christ?",teaching:"Cornerstone exists to glorify God by helping people know, trust, and follow Jesus Christ — and lead others to do the same. That mission unfolds in stages: we invite people to Christ without requiring polish first; we form disciples, not spectators, because sitting in a service doesn't automatically produce maturity; we serve as Jesus served, holding compassion and truth together; we develop disciple-makers, since every healthy believer eventually asks \"who am I helping follow Jesus?\"; and we live sent, carrying Christ into homes, workplaces, and ordinary conversations. Methods will change, but the mission — believe, grow, multiply, represent Him faithfully — must remain clear.",readFurther:"Matthew 28:18-20",questions:["Apply the question \"Does this help people take their next faithful step with Christ?\" to one ministry or habit in your own life.","Where do you measure ministry success by activity rather than transformation?","Jesus said, \"I am sending you\" — where has He sent you this week, and how did you represent Him there?","What's the difference between attending church and being Christ's Church, practically, in your own life?","Where in your week are you \"sent,\" and how well do you currently represent Christ there?"],application:"Name one person you can help take a next faithful step with Christ this week, and take that step with them.",closingPrayer:"Ask Christ to show you one person this week who needs an invitation, not into a program, but into Him.",leaderNotes:["Contrast spectators with disciples using real, specific examples from the group's own ministries.","Keep the group from turning this into a critique of programs — the point is personal mission, not institutional evaluation."]},
+{chapter:4,unit:1,title:"Our Vision",verseRef:"Philippians 1:6",verseText:"He who began a good work in you will carry it on to completion until the day of Christ Jesus.",icebreaker:"If someone described your walk with Christ in one sentence, based purely on your Monday-through-Saturday life, what would it say?",bigIdea:"Vision isn't prediction — it's trusting Christ to keep forming a people who treasure Him, walk together, serve with compassion, raise leaders, and outlive any single leader's tenure.",teaching:"Vision at Cornerstone isn't a prediction or a bigger-crowd ambition — it's the prayerful hope that Christ will keep forming a people who genuinely treasure Him. The chapter envisions a church of authentic disciples whose faith shows up in marriages and money, not just Sunday singing; a church that walks together, sharing burdens and extending grace because no one is meant to walk alone; a church that serves with extraordinary compassion, noticed for loving people before it's noticed for anything else; a church that raises leaders through discipleship rather than title; and a church that extends Christ's Kingdom beyond itself and outlives any single leader, because Jesus, not a person, is Cornerstone's true and final Leader.",readFurther:"Ephesians 3:14-21",questions:["Which \"we envision\" statement would most surprise someone who only knows you from Sunday mornings?","What's one relationship in this church where you could \"walk together\" more intentionally this month?","Where is your discipleship most visible on an ordinary Monday, not on Sunday morning?","What legacy do you want to leave in this church, regardless of whether anyone remembers your name?","Which vision statement — treasuring Christ, authentic discipleship, walking together, serving, raising leaders — most challenges you personally right now?"],application:"Choose one vision statement from this chapter and live it out in one concrete way this week.",closingPrayer:"Pray that God would keep completing the good work He began in you, especially in the area that feels slowest right now.",leaderNotes:["Emphasize this vision belongs to the whole congregation, not one pastor's personal dream.","Good session to connect personal discipleship to the church's larger, multi-decade hope."]},
+{chapter:5,unit:2,title:"Our Core Values",verseRef:"Colossians 3:17",verseText:"Whatever you do, whether in word or deed, do it all in the name of the Lord Jesus.",icebreaker:"Name a value your family held (spoken or unspoken) growing up. How do you know it was a real value and not just a saying?",bigIdea:"Real values are shown in what a church protects, celebrates, and sacrifices for — not merely what it prints. Cornerstone's seven values must be practiced, not just professed.",teaching:"Real values show up in what a church protects, celebrates, funds, and sacrifices for — not merely what's printed. Cornerstone names seven: we treasure Jesus Christ above preference and comfort; we submit to God's Word as final authority rather than culture; we believe before we obey, since obedience without trust becomes empty performance; we stay with Christ through every season, not just the easy ones; we grow together in relationships marked by truth and love; we serve generously because Christ served us first; and we multiply faithful disciples, because what Christ does in us is never meant to stop with us. Values are not what we print. Values are what we practice.",readFurther:"Micah 6:8",questions:["Of the seven values, which is currently weakest in your own life right now?","Which value would be hardest for you to hold if it cost you something this month?","How do your calendar and your bank statement reflect — or contradict — these values?","Which value would be easiest for you to defend on paper but hardest to live out this week?","If a stranger watched your calendar and spending for a month, which of these seven values would they conclude you actually hold?"],application:"Pick one value from this chapter and take one concrete, visible step toward it this week.",closingPrayer:"Confess honestly to God which value feels weakest right now, and ask for grace to practice it, not just agree with it.",leaderNotes:["Push for specificity — values conversations drift abstract quickly. Ask \"what did that look like this week?\"","This session pairs well with a review of church budget or calendar priorities if teaching leaders."]},
+{chapter:6,unit:2,title:"The Cornerstone Path",verseRef:"John 14:6",verseText:"I am the way and the truth and the life. No one comes to the Father except through me.",icebreaker:"Describe a season of your life that felt like \"waiting.\" Looking back, what was God doing in it?",bigIdea:"Discipleship is not a ladder of achievement — it's a lifelong journey with Christ through changing seasons. \"You Are Here\" is an invitation to honesty, not a ranking.",teaching:"The Christian life doesn't move in a straight line toward a finish line — it's a lifelong journey with Christ through seasons of believing, growing quietly, waiting, suffering, serving, and leading, often overlapping. The Path is not a curriculum or a ranking system; the Path is Christ Himself. \"You Are Here\" isn't a judgment — it's an honest marker that lets Christ meet you exactly where you stand. Belief is the beginning of obedience: most struggles with obedience are really struggles with trust. And growth is often hidden, like roots beneath soil, until a trial reveals what's been quietly forming — that revealing is not a new level, it's transformation becoming visible.",readFurther:"Psalm 23",questions:["Where are you on the Path right now — believing, growing quietly, waiting, suffering, serving, or leading?","How does \"You Are Here\" free you from comparing your journey to someone else's?","What would faithfulness to Christ look like in the specific season you're in today?","What season might you be tempted to rush past instead of letting Christ use?","Who in your life is walking a season you've already walked — could you walk alongside them?"],application:"Name your current season honestly and share it with one trusted person this week — don't carry it alone.",closingPrayer:"Ask Christ to help you stay with Him in whatever season you named today, without demanding to know how long it will last.",leaderNotes:["Reassure the group repeatedly: naming a season is not a confession of failure.","Some will name painful seasons (waiting, suffering) — be ready to sit with that rather than rush to fix it."]},
+{chapter:7,unit:2,title:"The Fruit of the Path",verseRef:"John 15:8",verseText:"This is to my Father's glory, that you bear much fruit, showing yourselves to be my disciples.",icebreaker:"Think of someone whose life reflects Christ clearly to you. What specifically do you see in them?",bigIdea:"Maturity isn't measured by knowledge or position — it's Christ becoming increasingly visible in us, not perfection.",teaching:"A tree is known by its fruit — and the fruit of discipleship is Christ becoming increasingly visible in us, not perfection. Mature disciples treasure Christ above comfort and recognition, practice lifelong repentance as light exposes what's hidden, and grow \"translucent\" — allowing Christ's character to shine through their own personality rather than being erased by it. That maturity shows in sacrificial love, joyful service, and perseverance through suffering, which often forms us more deeply than ease does. And healthy fruit carries seed: mature disciples eventually ask, \"who is walking behind me whom I can help follow Christ?\"",readFurther:"Galatians 5:22-23",questions:["Which fruit from this chapter have you seen Christ grow in you recently — even in a small way?","Where does pressure or criticism reveal what's still being formed in you?","Who could you help this month the way someone once helped you follow Christ?","Where has pressure or criticism this year revealed something Christ has actually been forming in you?","What's one \"seed\" — a lesson, Scripture, or hard-won wisdom — you're carrying that someone else needs?"],application:"Name one person you can encourage or mentor this week, using something Christ has taught you.",closingPrayer:"Thank God for one specific piece of fruit you can see He's grown in you, and ask Him to keep pruning what still needs to change.",leaderNotes:["\"Translucent\" is a key word in this chapter and the whole book — spend real time unpacking what it means practically.","Watch for people measuring fruit by comparison to others; redirect to their own growth over time."]},
+{chapter:8,unit:2,title:"Released to Ministry",verseRef:"1 Corinthians 12:7",verseText:"Now to each one the manifestation of the Spirit is given for the common good.",icebreaker:"What's a task or role at church — visible or invisible — that you've noticed someone else doing faithfully?",bigIdea:"Every believer is gifted by the Spirit for the good of the body — there are no spectators in the church.",teaching:"Every believer has been gifted by the Spirit for the common good; there are no spectators in the body of Christ. Gifts aren't earned or awarded to the most impressive — the Spirit distributes them according to His wisdom, and our job is to recognize, encourage, and release, not manufacture. Cornerstone puts gifts before titles and character before responsibility: giftedness can open a door character isn't ready to enter, so responsibility should grow alongside discipleship. And ministry crosses every generation, with both men and women serving together under Scripture — the church flourishes not when a few gifted people do everything, but when the whole body functions.",readFurther:"Romans 12:4-8",questions:["What has God gifted you to do, and where do you see fruit when you exercise it?","What has kept you sitting rather than serving — fear, busyness, or waiting to be asked?","How does \"character before responsibility\" apply to your own readiness to take on a new role?","What ability or burden has God given you that you haven't yet offered to the church?","Where might you be \"used\" for productivity rather than genuinely released to serve out of who Christ is forming you to be?"],application:"Ask a ministry leader this week how you can begin serving in an area matching your gifting.",closingPrayer:"Ask the Holy Spirit to show you clearly where He's gifted you, and for courage to offer it even if it feels small.",leaderNotes:["Address titles vs. function directly — some members over-value titles, others under-value quiet service.","Encourage leaders in the room to name someone they've noticed serving faithfully without recognition."]},
+{chapter:9,unit:3,title:"Leadership as Servanthood",verseRef:"Matthew 20:26",verseText:"Whoever wants to become great among you must be your servant.",icebreaker:"Describe a leader (any context) whose character impressed you more than their talent.",bigIdea:"Christian leadership begins at Jesus' feet, not on a platform. Gift attracts attention, but character sustains ministry.",teaching:"Jesus contrasted worldly leaders who \"lord it over\" others with Kingdom leadership: \"Not so with you.\" The towel comes before the title. Leadership begins at Jesus' feet — following before leading, and continuing to follow while leading, because no leader graduates from discipleship. Gifts impress quickly, but character sustains ministry over time, especially under criticism or when no one's watching. Leaders at Cornerstone build people before programs, develop others through relationship rather than a manual, equip rather than control, and hold every title with open hands, because every assignment is temporary and belongs to Christ.",readFurther:"Philippians 2:5-11",questions:["Where have you seen \"gift attracts attention, character sustains ministry\" proven true — or proven false?","Are you following Christ first, or leading mostly out of experience, instinct, and pressure?","Who is close enough to you to say, \"You were wrong,\" and how do you typically respond?","Where are you tempted to hold ministry tightly out of fear that \"no one else will do it right\"?","Who could you deliberately bring closer into your ministry so they see more than the polished parts?"],application:"If you lead anything, name one person you are developing — not just using — and take a next step with them this week.",closingPrayer:"Ask Christ to keep you sitting at His feet even as you serve, and to give you the humility to develop others rather than protect your role.",leaderNotes:["Best used with current leaders, deacons, and teachers — invite candid self-assessment, not performance.","Create space for leaders to admit where functioning has replaced following."]},
+{chapter:10,unit:3,title:"A Culture of Truth and Grace",verseRef:"Ephesians 4:15",verseText:"Speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ.",icebreaker:"When was the last time someone told you a hard truth in a way that actually felt loving?",bigIdea:"Truth and love must stay together. Cornerstone tells the truth, delivers it in love, and makes room for repentance.",teaching:"Jesus was full of grace and truth — not half of each. Truth without love becomes a weapon; love without truth becomes a lie. Cornerstone wants to be a people who tell the truth, and tell it in love, refusing both gossip and cruelty disguised as honesty. That means refusing to \"play church\" — bringing our real selves, not a performance, to Jesus — and making room for repentance, so failure doesn't have to be the end of someone's story. It also means handling conflict biblically: going to one another directly, seeking reconciliation before vindication, and protecting people, not institutional appearances, especially when abuse or harm is involved.",readFurther:"John 8:1-11",questions:["Where are you tempted to hide (\"I'm fine\") instead of telling the truth?","Is it harder for you to speak truth, or to speak it in love?","What would change if this church became known as a place where people repent quickly and are received well?","Where in your life right now are you \"playing church\" — looking fine but staying unchanged underneath?","Is there a relationship where you need to go directly to someone instead of talking about them?"],application:"Have one honest conversation this week that you've been avoiding.",closingPrayer:"Ask God for courage to be honest about a struggle this week, and for grace to receive correction without defensiveness.",leaderNotes:["Distinguish confidentiality (protects dignity) from secrecy (protects harm) — important for anyone in a caregiving role.","Model a real apology format in the room: \"I was wrong, please forgive me,\" not \"I'm sorry you felt that way.\""]},
+{chapter:11,unit:4,title:"Prayer as Dependence",verseRef:"John 15:5",verseText:"Apart from me you can do nothing.",icebreaker:"What does your current prayer life actually look like — not what you wish it looked like?",bigIdea:"Prayer is not a last resort after ideas run out — it's the confession that apart from Christ we can do nothing.",teaching:"Prayer is not one ministry among many; it's the confession that apart from Christ we can do nothing. It's meant to be our first response, not our last resort, in success as much as in crisis — because confidence in our own plan can grow faster than our dependence on God. Prayer is also relationship, not performance: we don't need polished language to be heard by our Father. And prayer shapes the disciple as much as it changes circumstances — while asking God to change a situation, He is often changing us, aligning our desires with His purposes and teaching us to hold both honest requests and full surrender, the way Jesus did in Gethsemane.",readFurther:"Matthew 6:5-13",questions:["What decision or burden have you been carrying alone that you haven't actually brought to God?","How would your week change if prayer were your first response instead of your last resort?","Where has confidence in your own plan outgrown your dependence on God?","How does praying for someone by name change the way you see them?","Is prayer your first response or your last resort, honestly?"],application:"Begin, or restart, a daily rhythm of morning Scripture and prayer this week.",closingPrayer:"Spend a few minutes in silence, then pray simply: \"Apart from You I can do nothing — teach me to depend on You today.\"",leaderNotes:["Reference the church's \"Morning Manna\" rhythm if your group already practices it.","Invite the group to commit to praying for one another by name between sessions."]},
+{chapter:12,unit:4,title:"Biblical Community",verseRef:"John 13:35",verseText:"By this everyone will know that you are my disciples, if you love one another.",icebreaker:"Who is someone who has asked you the \"second question\" — pushed past \"I'm fine\" to find out how you really are?",bigIdea:"We were never meant to walk alone. Biblical community means truly knowing and being known.",teaching:"Culture admires independence, but the Christian life is full of \"one another\" commands you cannot obey alone. Gathering in the same room doesn't automatically create community; it requires the willingness to know and be known, which takes time and courage. Biblical community worships, learns, and carries burdens together, tells the truth in love, forgives freely because we've been forgiven a far greater debt, and opens homes and lives through real hospitality — not entertaining, but making room. It also means every generation needs every generation: children need adults who've walked with Christ for decades, and older believers need the energy and questions of the young.",readFurther:"Romans 12:9-16",questions:["Who knows the real you, past \"I'm fine\"?","Where do you need to extend grace, ask forgiveness, or open your life (hospitality) this season?","What would it look like for your generation to be better connected to another generation in this church?","Whose burden could you help carry this week if you simply noticed and asked?","What would it cost you to open your home or schedule to someone outside your usual circle?"],application:"Invite someone into your home, or ask a genuine \"second question,\" this week.",closingPrayer:"Ask God to show you one person who needs to know they're not walking alone, and to give you courage to reach out.",leaderNotes:["Consider pairing younger and older members for a conversation as a live example of this chapter.","Watch for isolation in the room — some members may need a direct, personal follow-up after this session."]},
+{chapter:13,unit:4,title:"Generosity as a Way of Life",verseRef:"Matthew 10:8",verseText:"Freely you have received; freely give.",icebreaker:"Describe a time someone was generous to you in a way that had nothing to do with money.",bigIdea:"Generosity flows from grace already received — it is a life of open hands, not merely what we place in an offering.",teaching:"Generosity includes money, but it doesn't end there — it's a way of living that flows from understanding grace already received. Everything we possess — time, ability, opportunity, influence, resources — has been entrusted to us by God; we are stewards, and generosity loosens the grip that possessions can gain over the heart. We give because we have already received, not to earn God's blessing, and generosity must become personal: what has God placed specifically in your hands? Sometimes the answer isn't a committee or a needs assessment — it's simply helping. And mature generosity doesn't need an audience, because Christ already knows, and that is enough.",readFurther:"2 Corinthians 8:1-9",questions:["What has God placed in your hands — time, skill, a home, money — that you could give this week?","Where does something you possess actually possess you?","What need around you have you noticed but not yet acted on?","What's something in your life that has quietly started to possess you instead of the other way around?","Who around you has a need you've noticed but haven't yet acted on?"],application:"Give something specific and concrete this week, without needing anyone to know.",closingPrayer:"Ask God to reveal one specific, tangible way to give this week — then thank Him in advance for the opportunity.",leaderNotes:["Keep this practical and free of guilt or pressure — the chapter explicitly rejects manipulative giving appeals.","Focus on discipleship of the heart, not a budget or campaign conversation."]},
+{chapter:14,unit:4,title:"Worship That Transforms",verseRef:"John 4:24",verseText:"God is spirit, and his worshipers must worship in the Spirit and in truth.",icebreaker:"What's a song, hymn, or moment of worship that has stayed with you for years? Why that one?",bigIdea:"Worship begins with who God is and must move from Sunday singing into Monday obedience.",teaching:"Worship doesn't begin with our favorite song or style — it begins with who God is and what He has done. The better question isn't \"did I like it?\" but \"did it direct my heart toward God and help me respond faithfully?\" Worship engages the whole person — mind, heart, body, and will — and it must move from Sunday singing into Monday obedience, because volume is not the same as surrender. Excellence in worship is an offering of stewardship, not performance, and worship stays anchored when Spirit and truth are held together: the Spirit never leads God's people away from God's Word.",readFurther:"Romans 12:1-2",questions:["Where does your worship stop at emotion and never reach obedience?","What personal preference do you tend to elevate above worshiping \"in spirit and truth\"?","Is your life this week evidence that Sunday's worship continued into Monday?","Where has your worship stayed at the level of emotion without reaching your actual choices this week?","What's one way \"Sunday worship\" could become \"Monday obedience\" for you specifically?"],application:"Choose one act of \"Monday worship\" — integrity, patience, generosity — tied directly to something from Sunday.",closingPrayer:"Ask God to make your worship this week — at church and beyond it — a matter of surrender, not just feeling.",leaderNotes:["Address style debates gently — the test given in the chapter is whether worship forms disciples, not personal taste.","Good session for worship team members and volunteers serving on Sundays."]},
+{chapter:15,unit:5,title:"Every Member a Disciple",verseRef:"Matthew 28:19",verseText:"Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.",icebreaker:"Who discipled you — even informally — and what did they actually do that helped you grow?",bigIdea:"The mission belongs to the whole church, not a staffed few. Every disciple has a next faithful step.",teaching:"The mission belongs to the whole church, not a staffed few — \"working together, we exist to make disciples.\" Membership is more than attendance; it's a covenant relationship carrying real responsibility to worship, grow, serve, give, forgive, and join the mission. Every disciple, no matter their stage, has a next faithful step, which is why \"You Are Here\" matters as much here as on the Path itself. Disciples are formed together, in ordinary relationships as much as formal classes, and every disciple has something to give and someone to help follow Jesus — the church equips, but disciples live the mission far beyond the building.",readFurther:"2 Timothy 2:2",questions:["What is genuinely your next faithful step right now — not someone else's, yours?","If someone asked you \"who are you helping follow Jesus?\" today, could you give them a name?","Where do you rely on attendance in place of active discipleship?","What is your next faithful step on the Cornerstone Path right now?","Who helped form you as a disciple, and who are you helping now?"],application:"Name, by name, one person you are discipling or could begin discipling this month.",closingPrayer:"Ask God to show you your next faithful step clearly this week, and for the courage to take it without delay.",leaderNotes:["Tie directly back to Session 6 (the Path) and Session 7 (fruit and multiplication) for a fuller arc.","Push past vague answers — ask for one specific name and one specific next step."]},
+{chapter:16,unit:5,title:"Protecting the Culture",verseRef:"1 Corinthians 15:58",verseText:"Stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord.",icebreaker:"What's one thing about this church that you hope never changes, and why?",bigIdea:"Culture is formed by repetition — what we repeatedly practice, we become; what we tolerate, we teach.",teaching:"Every church has a culture — a shared understanding of how we live, serve, decide, and disagree together — and it's formed less by dramatic moments than by what's repeated: a sermon prepared faithfully, a visitor welcomed warmly, a conflict handled honestly. What we repeatedly tolerate, we eventually teach. Protecting culture means protecting convictions — Christ's centrality, Scripture's authority, discipleship, and people — while holding methods and traditions with open hands, since preferences mistaken for convictions cause needless conflict. Culture is also protected by remembering and telling the church's real stories faithfully, so future generations inherit courage, not nostalgia.",readFurther:"Deuteronomy 6:4-9",questions:["What convictions here should never change, and what methods might need to?","Where have you seen a method mistaken for a conviction — treated as untouchable when it wasn't essential?","What's one story of God's faithfulness in this church you could tell someone newer this month?","Where have you seen a preference treated as a conviction, and what did that cost?","What story from this church's history strengthens your faith for its future?"],application:"Practice one small, repeatable act this week that strengthens the culture you want to leave behind.",closingPrayer:"Ask God to help you hold methods loosely and convictions firmly, and to show you one small habit worth protecting.",leaderNotes:["Distinguish convictions (protect) from preferences (release) with real, current examples from your church.","Especially valuable for long-tenured members processing change."]},
+{chapter:17,unit:6,title:"Succession as Stewardship",verseRef:"2 Timothy 2:2",verseText:"And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others.",icebreaker:"Think of someone who prepared you for something — a job, a skill, a responsibility. What did they do well?",bigIdea:"Every leader serves a season. Succession begins with discipleship, not a transition announcement.",teaching:"Every leader serves for a season; the church belongs to Christ, not to whoever currently carries the most responsibility. Succession doesn't begin with a transition announcement — it begins with ordinary discipleship: teaching Scripture, inviting someone into a decision, entrusting real responsibility before it's urgent. Faithful succession prepares people, not replacements — the next leader doesn't need to imitate the last one, only serve the same unchanging Gospel faithfully in their own time. And it requires leaders willing to share responsibility before they have to, and to genuinely celebrate when someone they've developed grows beyond them.",readFurther:"Numbers 27:15-20",questions:["Are you currently more focused on being needed, or on preparing someone else to be ready?","What's one piece of real responsibility you could share with someone this month, even imperfectly?","How do you typically respond to leadership transitions — with grief, gratitude, or resistance?","Are you preparing someone to follow you, or making yourself indispensable?","Who is God preparing that you could invest in this year?"],application:"Share one real responsibility with someone you're developing this month.",closingPrayer:"Ask God to show you who He's preparing near you, and for the humility to invest in them without needing credit.",leaderNotes:["Especially relevant for pastors, deacons, and teachers — discuss actual succession plans if applicable.","Normalize the discomfort of releasing responsibility as part of healthy discipleship."]},
+{chapter:18,unit:6,title:"Measuring Faithfulness",verseRef:"1 Corinthians 4:2",verseText:"Now it is required that those who have been given a trust must prove faithful.",icebreaker:"What's something you tend to measure in your own life — and is it the right thing?",bigIdea:"We measure faithfulness, not merely numbers — asking whether people are becoming more like Jesus.",teaching:"Every church measures something — attendance, budgets, participation — and none of that is wrong until a useful measurement becomes the definition of success. Cornerstone asks not only \"are more people coming?\" but \"are people becoming more like Jesus?\" Fruit matters, but lasting fruit grows from abiding in Christ, not from pressure or comparison between congregations. What a church celebrates reveals what it values — quiet faithfulness deserves the same honor as visible growth. And the most important evaluation may be the one each of us conducts before the Lord: am I closer to Christ than I was a year ago?",readFurther:"1 Corinthians 3:6-9",questions:["What do you tend to measure in your own life — activity or transformation?","What would it look like to celebrate quiet faithfulness the way we celebrate visible growth?","\"Am I closer to Christ than I was a year ago?\" — answer that honestly.","If your life were only measured by faithfulness, not results, how would this year look different?","What's one quiet act of faithfulness — yours or someone else's — that deserves more honor than it gets?"],application:"This week, sit with the chapter's self-evaluation questions and journal your honest answers.",closingPrayer:"Bring your honest answer to \"am I closer to Christ than a year ago?\" to God, without defense, and ask Him to keep completing His work in you.",leaderNotes:["Sensitive session — create a safe, non-comparative space for honest self-examination.","Consider closing in silent reflection or written prayer rather than group discussion for the final questions."]},
+{chapter:19,unit:6,title:"Kingdom Outcomes: Looking Toward 2040",verseRef:"Ephesians 3:20-21",verseText:"Now to him who is able to do immeasurably more than all we ask or imagine...",icebreaker:"If you could guarantee one thing about this church's future in 2040, what would you want it to be?",bigIdea:"We plan with open hands, trusting Christ with a future greater than we can ask or imagine.",teaching:"This closing vision plans with open hands — not a prediction, but a prayerful aspiration measured by faithfulness across three, five, and ten-year horizons: strengthening the foundation, expanding influence, and becoming a church that outlives its leaders. The deepest hope isn't that every ministry grows larger, but that Cornerstone grows more faithful — known for humility over prominence, discipleship over attendance, and prayer over programming. The charge to future leaders is direct: protect the Gospel, unity, holiness, and the mission, not comfort; love deeply, shepherd patiently, and finish humbly, trusting the Chief Shepherd who was faithful before us and will remain faithful after.",readFurther:"Joshua 1:6-9",questions:["Which three-, five-, or ten-year horizon in this chapter do you most want to help build toward?","What's one sentence you'd want future generations of this church to say was true of you?","What legacy do you want the next generation of this church to inherit from you specifically?","Which \"dream worth praying for\" — humility over prominence, discipleship over attendance — most stirs you?","How will you answer the charge to future leaders — to obey Christ faithfully in your own day?"],application:"Write a one-sentence prayer for this church's future and pray it daily for the next month.",closingPrayer:"Pray the closing prayer of this chapter for Cornerstone in 2040, and add your own name to it.",leaderNotes:["Strong closing session for the curriculum — consider closing in shared prayer or communion.","Invite the group to reflect on the whole 19-session journey, not just this final chapter."]}
+];
+
+const UNIT_NAMES = {1:"Foundations of Identity",2:"Values and the Path of Discipleship",3:"Leadership and Culture",4:"Spiritual Rhythms",5:"Multiplying Disciples",6:"Legacy and the Future"};
+
+class Component extends DCLogic {
+  state = { view: 'home', currentId: null, completed: {} };
+
+  componentDidMount() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('cornerstone2040_progress') || '{}');
+      this.setState({ completed: saved });
+    } catch (e) {}
+  }
+
+  persist(completed) {
+    try { localStorage.setItem('cornerstone2040_progress', JSON.stringify(completed)); } catch (e) {}
+  }
+
+  openSession(id) { this.setState({ view: 'session', currentId: id }); window.scrollTo(0,0); }
+  goHome() { this.setState({ view: 'home' }); }
+  goPrev() {
+    const idx = SESSIONS.findIndex(s => s.chapter === this.state.currentId);
+    if (idx > 0) { this.setState({ currentId: SESSIONS[idx - 1].chapter }); window.scrollTo(0,0); }
+  }
+  goNext() {
+    const idx = SESSIONS.findIndex(s => s.chapter === this.state.currentId);
+    if (idx < SESSIONS.length - 1) { this.setState({ currentId: SESSIONS[idx + 1].chapter }); window.scrollTo(0,0); }
+  }
+  toggleComplete() {
+    const id = this.state.currentId;
+    const completed = { ...this.state.completed, [id]: !this.state.completed[id] };
+    this.setState({ completed });
+    this.persist(completed);
+  }
+
+  renderVals() {
+    const completed = this.state.completed || {};
+    const completedCount = SESSIONS.filter(s => completed[s.chapter]).length;
+    const totalCount = SESSIONS.length;
+    const progressPct = Math.round((completedCount / totalCount) * 100);
+
+    const unitMap = {};
+    SESSIONS.forEach((s) => {
+      if (!unitMap[s.unit]) unitMap[s.unit] = { id: s.unit, num: s.unit, name: UNIT_NAMES[s.unit], sessions: [] };
+      unitMap[s.unit].sessions.push({
+        chapter: s.chapter,
+        title: s.title,
+        verseRef: s.verseRef,
+        done: !!completed[s.chapter],
+        open: () => this.openSession(s.chapter)
+      });
+    });
+    const units = Object.keys(unitMap).sort((a,b)=>a-b).map(k => unitMap[k]);
+
+    const idx = SESSIONS.findIndex(s => s.chapter === this.state.currentId);
+    let currentSession = null;
+    if (idx >= 0) {
+      const s = SESSIONS[idx];
+      currentSession = {
+        chapter: s.chapter,
+        num: idx + 1,
+        unitName: UNIT_NAMES[s.unit],
+        title: s.title,
+        verseRef: s.verseRef,
+        verseText: s.verseText,
+        icebreaker: s.icebreaker,
+        bigIdea: s.bigIdea,
+        teaching: s.teaching,
+        readFurther: s.readFurther,
+        questions: s.questions.map((q,i) => ({ n: i+1, text: q })),
+        application: s.application,
+        closingPrayer: s.closingPrayer,
+        leaderNotes: s.leaderNotes
+      };
+    }
+
+    const isComplete = currentSession ? !!completed[currentSession.chapter] : false;
+
+    return {
+      isHome: this.state.view === 'home',
+      isSession: this.state.view === 'session' && !!currentSession,
+      units,
+      completedCount,
+      totalCount,
+      progressPct,
+      currentSession,
+      showLeaderNotes: this.props.showLeaderNotes ?? true,
+      goHome: () => this.goHome(),
+      goPrev: () => this.goPrev(),
+      goNext: () => this.goNext(),
+      toggleComplete: () => this.toggleComplete(),
+      prevColor: idx > 0 ? '#2E6CB4' : '#C7CBD1',
+      nextColor: idx < SESSIONS.length - 1 ? '#2E6CB4' : '#C7CBD1',
+      completeLabel: isComplete ? '✓ Completed' : 'Mark Complete',
+      completeBg: isComplete ? '#2E6CB4' : '#FFFFFF',
+      completeColor: isComplete ? '#FFFFFF' : '#2E6CB4'
+    };
+  }
+}
+
+</script>
+</body>
+</html>

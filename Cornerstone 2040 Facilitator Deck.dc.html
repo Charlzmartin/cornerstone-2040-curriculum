@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<!-- COVER -->
+<section data-label="Cover" data-speaker-notes="Welcome the group. Introduce yourself and explain this is a six-session series walking through Cornerstone 2040, our church's pastoral vision. Mention it can run in-person or over Zoom, and that each session runs about 60 minutes." style="background:#0A2A4D;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;color:#fff;text-align:center;padding:80px;box-sizing:border-box;">
+  <sc-if value="{{ showLogo }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#F6F5F2;border-radius:16px;padding:18px 26px;margin-bottom:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(0,0,0,0.25);">
+      <img src="./assets/cornerstone-logo.png" alt="Cornerstone Fellowship Church logo" style="height:{{ logoHeight }}px;width:auto;display:block;">
+    </div>
+  </sc-if>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:88px;letter-spacing:1px;">CORNERSTONE <span style="color:#7CA9DD;">2040</span></div>
+  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:#B9C4D4;margin-top:24px;">A Six-Session Facilitator Curriculum</div>
+  <div style="font-size:24px;color:#7C8AA0;margin-top:16px;letter-spacing:0.5px;">FOR IN-PERSON CLASSES OR ZOOM GROUPS &middot; 60 MINUTES PER SESSION</div>
+</section>
+
+<!-- SESSION 1 DIVIDER -->
+<section data-label="S1 Divider" data-speaker-notes="This session covers chapters 1-4: A Steward's Declaration, The Cornerstone Identity, Our Mission, Our Vision. If on Zoom, confirm breakout rooms are enabled in your account before the meeting starts." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 1 &middot; UNIT 1</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Foundations of Identity</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:900px;line-height:1.6;margin-bottom:48px;">Chapters 1&ndash;4: A Steward's Declaration &middot; The Cornerstone Identity &middot; Our Mission &middot; Our Vision</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 1 SCRIPTURE -->
+<section data-label="S1 Scripture" data-speaker-notes="Read each verse aloud, or ask four volunteers to each read one. Then walk through the big idea and teaching points. Keep this to about 15 minutes." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Unless the Lord builds the house, the builders labor in vain.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">Psalm 127:1</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;You also, like living stones, are being built into a spiritual house.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">1 Peter 2:5</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;As the Father has sent me, I am sending you.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 20:21</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;He who began a good work in you will carry it on to completion.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">Philippians 1:6</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#0A2A4D;line-height:1.35;">Cornerstone belongs to Christ. Our identity, mission, and vision all flow from Him &mdash; not from a pastor, a style, or a method.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>We are stewards, not owners, of doctrine, relationships, and influence.</li>
+      <li>Our identity is found in Christ alone, not a worship style or shared history.</li>
+      <li>Our mission: help people know, trust, and follow Jesus &mdash; and lead others to do the same.</li>
+      <li>Our vision: a church that treasures Christ and outlives its leaders.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 1 DISCUSSION -->
+<section data-label="S1 Discussion" data-speaker-notes="In-person: form groups of 3-4. On Zoom: use Breakout Rooms > Assign Automatically, 3-4 people per room, 12-minute timer with a 2-minute warning. Rejoin and invite one or two groups to share an insight." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; BREAKOUT GROUPS OF 3&ndash;4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes &middot; in-person: cluster chairs &middot; Zoom: use Breakout Rooms</div>
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">1</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where do you treat something entrusted to you as if it belonged to you alone?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">2</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Which identity marker are you most tempted to treasure above Christ?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">3</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">What's one "next faithful step" you sense Christ inviting you to take?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 1 ACTIVITY -->
+<section data-label="S1 Activity" data-speaker-notes="Pairs work well both in-person and on Zoom (use Breakout Rooms with 2 per room). Give 6 minutes, call time, have them switch roles for 6 more, then 3 minutes to debrief together." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">ROLE-PLAY ACTIVITY &middot; PAIRS &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">"What's your church like?"</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    Pair up. <strong>Partner A</strong> plays a curious neighbor asking, "What's your church like?" <strong>Partner B</strong> answers in a way that centers Christ &mdash; not programs, style, or size. Switch roles and repeat.
+    <div style="margin-top:24px;font-size:24px;color:#5A6470;font-style:italic;">Debrief: What was hard about resisting the urge to describe programs first?</div>
+  </div>
+</section>
+
+<!-- SESSION 1 PRAYER -->
+<section data-label="S1 Prayer" data-speaker-notes="Stay in the same pairs or small groups for prayer. On Zoom, keep breakout rooms open for this. Close by bringing everyone back for a one-sentence takeaway together." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">In your pair or group, thank God aloud for one specific way He has been "building the house" in this church's history &mdash; then pray for each other's next faithful step.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">We are stewards, not owners &mdash; and our identity, mission, and vision are found in Christ alone.</div>
+  </div>
+</section>
+
+<!-- SESSION 2 DIVIDER -->
+<section data-label="S2 Divider" data-speaker-notes="This session covers chapters 5-8: Our Core Values, The Cornerstone Path, The Fruit of the Path, Released to Ministry." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 2 &middot; UNIT 2</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Values and the Path of Discipleship</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:900px;line-height:1.6;margin-bottom:48px;">Chapters 5&ndash;8: Our Core Values &middot; The Cornerstone Path &middot; The Fruit of the Path &middot; Released to Ministry</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 2 SCRIPTURE -->
+<section data-label="S2 Scripture" data-speaker-notes="Read each verse aloud. Emphasize that 'You Are Here' on the Path is not a ranking system, but an honest starting point." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Whatever you do, do it all in the name of the Lord Jesus.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">Colossians 3:17</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;I am the way and the truth and the life.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 14:6</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;This is to my Father's glory, that you bear much fruit.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 15:8</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;To each one the manifestation of the Spirit is given for the common good.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">1 Corinthians 12:7</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#0A2A4D;line-height:1.35;">Cornerstone's values are shown by what we practice, not what we print. Discipleship is a lifelong path with Christ that bears fruit and releases every believer into ministry.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>Values: treasure Christ, submit to the Word, believe before we obey, stay with Christ, grow together, serve generously, multiply disciples.</li>
+      <li>The Path is not a ladder &mdash; "You Are Here" meets you honestly in your season.</li>
+      <li>Fruit is Christ becoming visible in us, not perfection.</li>
+      <li>Every believer is gifted by the Spirit; there are no spectators.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 2 DISCUSSION -->
+<section data-label="S2 Discussion" data-speaker-notes="Groups of 3-4, in-person or Zoom Breakout Rooms, 12 minutes plus a 2-minute warning. Invite a couple of groups to share back." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; BREAKOUT GROUPS OF 3&ndash;4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes</div>
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">1</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Which of the seven values is currently weakest in your life?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">2</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where are you on the Path right now &mdash; believing, growing quietly, waiting, suffering, serving, leading?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">3</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">What gift has God given you that you haven't yet offered the church?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 2 ACTIVITY -->
+<section data-label="S2 Activity" data-speaker-notes="Pairs, 6 minutes each direction, 3 minutes to debrief. Remind listeners: reflect back what you heard, don't offer advice." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SCENARIO ACTIVITY &middot; PAIRS &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">"You Are Here" interview</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    In pairs, take turns interviewing each other: "Where are you on the Cornerstone Path right now, and what would faithfulness look like there?" Listen without trying to fix; simply reflect back what you heard.
+  </div>
+</section>
+
+<!-- SESSION 2 PRAYER -->
+<section data-label="S2 Prayer" data-speaker-notes="Stay in pairs. Encourage praying by name for the specific season each partner named." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">Pray by name for your partner's current season on the Path.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">Values are practiced, not printed. The Path is Christ, and every believer has a ministry.</div>
+  </div>
+</section>
+
+<!-- SESSION 3 DIVIDER -->
+<section data-label="S3 Divider" data-speaker-notes="This session covers chapters 9-10: Leadership as Servanthood and A Culture of Truth and Grace. Handle the role-play activity with sensitivity — this touches real relationships." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 3 &middot; UNIT 3</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Leadership and Culture</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:900px;line-height:1.6;margin-bottom:48px;">Chapters 9&ndash;10: Leadership as Servanthood &middot; A Culture of Truth and Grace</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 3 SCRIPTURE -->
+<section data-label="S3 Scripture" data-speaker-notes="Read each verse aloud. Emphasize grace and truth together — this sets up the tone for the discussion and activity." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:24px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:22px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#0A2A4D;">&ldquo;Whoever wants to become great among you must be your servant.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:8px;">Matthew 20:26</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:22px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#0A2A4D;">&ldquo;Speaking the truth in love, we will grow into the mature body of Christ.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:8px;">Ephesians 4:15</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#0A2A4D;line-height:1.35;">Leadership is servanthood proven by character. A healthy culture holds truth and grace together.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>The towel comes before the title &mdash; leadership begins at Jesus' feet.</li>
+      <li>Gift attracts attention; character sustains ministry.</li>
+      <li>Truth without love is a weapon; love without truth is a lie.</li>
+      <li>We refuse to "play church" and make room for repentance.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 3 DISCUSSION -->
+<section data-label="S3 Discussion" data-speaker-notes="Groups of 3-4. This topic can get personal — remind the group that what's shared in the small group stays there." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; BREAKOUT GROUPS OF 3&ndash;4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes</div>
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">1</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where are you tempted to hold something tightly out of fear no one else will do it "right"?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">2</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Is it harder for you to speak truth, or to speak it in love?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">3</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where in your life are you "playing church" &mdash; looking fine but unchanged underneath?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 3 ACTIVITY -->
+<section data-label="S3 Activity" data-speaker-notes="Groups of 3: one shares, one responds, one observes and gives feedback, then rotate. On Zoom, breakout rooms of 3 work well. Keep scenarios realistic but not identifying real people." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">ROLE-PLAY ACTIVITY &middot; GROUPS OF 3 &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">Practicing a hard conversation</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    In groups of three, one person shares a real or realistic scenario needing a hard conversation. Practice responding with <strong>"I was wrong, please forgive me"</strong> instead of <strong>"I'm sorry you felt that way."</strong> Rotate roles so everyone practices.
+  </div>
+</section>
+
+<!-- SESSION 3 PRAYER -->
+<section data-label="S3 Prayer" data-speaker-notes="Close in the same small groups or as one large group, whichever fits the room." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">Pray for courage to have one honest conversation this week.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">The towel comes before the title. Truth and love must stay together.</div>
+  </div>
+</section>
+
+<!-- SESSION 4 DIVIDER -->
+<section data-label="S4 Divider" data-speaker-notes="This session covers chapters 11-14: Prayer as Dependence, Biblical Community, Generosity as a Way of Life, Worship That Transforms. This session uses four small groups, each assigned one rhythm." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 4 &middot; UNIT 4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Spiritual Rhythms</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:1000px;line-height:1.6;margin-bottom:48px;">Chapters 11&ndash;14: Prayer as Dependence &middot; Biblical Community &middot; Generosity as a Way of Life &middot; Worship That Transforms</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 4 SCRIPTURE -->
+<section data-label="S4 Scripture" data-speaker-notes="Read each verse aloud, one per rhythm, to set up the next slide's assigned breakout groups." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Apart from me you can do nothing.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 15:5 &mdash; Prayer</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;By this everyone will know you are my disciples, if you love one another.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 13:35 &mdash; Community</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Freely you have received; freely give.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">Matthew 10:8 &mdash; Generosity</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;God is spirit, and his worshipers must worship in the Spirit and in truth.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">John 4:24 &mdash; Worship</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#0A2A4D;line-height:1.35;">Prayer, community, generosity, and worship are the rhythms that sustain a disciple's life with Christ.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>Prayer is dependence &mdash; our first response, not our last resort.</li>
+      <li>We were never meant to walk alone.</li>
+      <li>Generosity is a life of open hands, not just an offering.</li>
+      <li>Worship must move from Sunday singing into Monday obedience.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 4 DISCUSSION -->
+<section data-label="S4 Discussion" data-speaker-notes="Form four groups and assign one rhythm to each (Prayer, Community, Generosity, Worship). On Zoom, create 4 named Breakout Rooms in advance. Give 12 minutes, then have each group report one insight to the whole room." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; FOUR GROUPS, ONE RHYTHM EACH</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes &middot; each group reports back one insight</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div style="background:#fff;border-radius:10px;padding:24px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:24px;margin-bottom:8px;">PRAYER GROUP</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Is prayer your first response or your last resort?</div></div>
+    <div style="background:#fff;border-radius:10px;padding:24px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:24px;margin-bottom:8px;">COMMUNITY GROUP</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Who knows the real you, past "I'm fine"?</div></div>
+    <div style="background:#fff;border-radius:10px;padding:24px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:24px;margin-bottom:8px;">GENEROSITY GROUP</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">What has God placed in your hands that you could give this week?</div></div>
+    <div style="background:#fff;border-radius:10px;padding:24px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:24px;margin-bottom:8px;">WORSHIP GROUP</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where does your worship stop at emotion and never reach obedience?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 4 ACTIVITY -->
+<section data-label="S4 Activity" data-speaker-notes="Pairs, 6 minutes each way. Push participants past 'I'll pray about it' toward one specific, concrete response." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SCENARIO ACTIVITY &middot; PAIRS &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">Noticing and responding to a need</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    In pairs, <strong>Partner A</strong> describes a real or hypothetical need (a lonely neighbor, a financial strain, a tired volunteer). <strong>Partner B</strong> practices responding with one concrete, generous next step &mdash; not "I'll pray about it."
+  </div>
+</section>
+
+<!-- SESSION 4 PRAYER -->
+<section data-label="S4 Prayer" data-speaker-notes="Lead this one as a whole group rather than breakouts — walk through each rhythm together out loud." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">As a whole group, pray through each rhythm in turn &mdash; dependence in prayer, connection in community, open hands in generosity, and surrender in worship.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">Apart from Christ we can do nothing &mdash; and no one should walk, give, or worship alone.</div>
+  </div>
+</section>
+
+<!-- SESSION 5 DIVIDER -->
+<section data-label="S5 Divider" data-speaker-notes="This session covers chapters 15-16: Every Member a Disciple and Protecting the Culture." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 5 &middot; UNIT 5</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Multiplying Disciples</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:900px;line-height:1.6;margin-bottom:48px;">Chapters 15&ndash;16: Every Member a Disciple &middot; Protecting the Culture</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 5 SCRIPTURE -->
+<section data-label="S5 Scripture" data-speaker-notes="Read each verse aloud." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:24px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:22px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#0A2A4D;">&ldquo;Go and make disciples of all nations.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:8px;">Matthew 28:19</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:22px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#0A2A4D;">&ldquo;Stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:8px;">1 Corinthians 15:58</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#0A2A4D;line-height:1.35;">The mission belongs to the whole church; every disciple has a next step and helps someone else take theirs. Culture is protected by what we repeatedly practice.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>"Working together, we exist to make disciples" is everyone's calling, not a staff job.</li>
+      <li>Every disciple has a next faithful step and someone to help.</li>
+      <li>Culture is formed by repetition &mdash; what we tolerate, we teach.</li>
+      <li>Convictions must be protected; preferences may be released.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 5 DISCUSSION -->
+<section data-label="S5 Discussion" data-speaker-notes="Groups of 3-4. Push for specific names and answers, not general ones." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; BREAKOUT GROUPS OF 3&ndash;4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes</div>
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">1</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">If someone asked, "Who are you helping follow Jesus?" could you give a name?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">2</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Where do you rely on attendance in place of active discipleship?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">3</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">What's one Cornerstone story of God's faithfulness you could tell someone newer?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 5 ACTIVITY -->
+<section data-label="S5 Activity" data-speaker-notes="Pairs, 6 minutes each way. Remind Partner B they don't need all the answers — just presence, Scripture, and a willingness to walk alongside." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">ROLE-PLAY ACTIVITY &middot; PAIRS &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">A disciple-making conversation</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    <strong>Partner A</strong> plays a newer believer with a real question. <strong>Partner B</strong> practices listening, pointing to Scripture, and offering to walk alongside &mdash; without needing to have all the answers. Switch roles.
+  </div>
+</section>
+
+<!-- SESSION 5 PRAYER -->
+<section data-label="S5 Prayer" data-speaker-notes="Stay in pairs for this prayer time." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">Pray by name for the person each of you named as someone you're discipling or could disciple.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">Every member is a disciple-maker. Protect convictions; release preferences.</div>
+  </div>
+</section>
+
+<!-- SESSION 6 DIVIDER -->
+<section data-label="S6 Divider" data-speaker-notes="This session covers chapters 17-19: Succession as Stewardship, Measuring Faithfulness, and Kingdom Outcomes. This is the closing session — consider communion or an extended shared prayer time." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:100px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;letter-spacing:2px;margin-bottom:16px;">SESSION 6 &middot; UNIT 6</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin-bottom:28px;">Legacy and the Future</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:900px;line-height:1.6;margin-bottom:48px;">Chapters 17&ndash;19: Succession as Stewardship &middot; Measuring Faithfulness &middot; Kingdom Outcomes</div>
+  <div style="display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">WELCOME</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">5 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">SCRIPTURE</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">DISCUSSION</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);"><div style="font-size:24px;color:#7CA9DD;">ACTIVITY</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">15 min</div></div>
+    <div style="flex:1;padding:20px;text-align:center;"><div style="font-size:24px;color:#7CA9DD;">PRAYER</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:6px;">10 min</div></div>
+  </div>
+</section>
+
+<!-- SESSION 6 SCRIPTURE -->
+<section data-label="S6 Scripture" data-speaker-notes="Read each verse aloud." style="background:#F6F5F2;display:flex;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;gap:60px;">
+  <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">SCRIPTURE FOCUS</div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Entrust to reliable people who will also be qualified to teach others.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">2 Timothy 2:2</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Those who have been given a trust must prove faithful.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">1 Corinthians 4:2</div></div>
+    <div style="background:#fff;border-left:6px solid #2E6CB4;border-radius:0 8px 8px 0;padding:18px 24px;"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#0A2A4D;">&ldquo;Now to him who is able to do immeasurably more than all we ask or imagine.&rdquo;</div><div style="font-size:24px;color:#8E8B84;margin-top:6px;">Ephesians 3:20-21</div></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;">BIG IDEA</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:#0A2A4D;line-height:1.35;">We measure faithfulness, not just numbers; we prepare the next generation; and we plan with open hands, trusting Christ with Cornerstone's future.</div>
+    <ul style="font-size:24px;line-height:1.7;color:#3E4A57;padding-left:24px;margin:0;">
+      <li>Every leader serves a season; succession begins with discipleship.</li>
+      <li>We measure faithfulness &mdash; "Am I closer to Christ than a year ago?"</li>
+      <li>Faithful leaders prepare people, not replacements.</li>
+      <li>We plan with open hands, trusting Christ with more than we can ask or imagine.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SESSION 6 DISCUSSION -->
+<section data-label="S6 Discussion" data-speaker-notes="Groups of 3-4. The final question can be answered silently in journals instead of aloud if the group prefers." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">SMALL-GROUP DISCUSSION &middot; BREAKOUT GROUPS OF 3&ndash;4</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:40px;">15 minutes</div>
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">1</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">Are you more focused on being needed, or on preparing someone else to be ready?</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">2</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">"Am I closer to Christ than I was a year ago?" &mdash; answer honestly.</div></div>
+    <div style="display:flex;gap:20px;align-items:flex-start;"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#2E6CB4;font-size:32px;">3</div><div style="font-size:24px;color:#1C2530;line-height:1.5;">What's one sentence you'd want future generations of this church to say was true of you?</div></div>
+  </div>
+</section>
+
+<!-- SESSION 6 ACTIVITY -->
+<section data-label="S6 Activity" data-speaker-notes="Pairs, 6 minutes each way. This is a good closing metaphor for the whole series — leave time to debrief as a full group before moving to prayer." style="background:#F6F5F2;display:flex;flex-direction:column;padding:80px;font-family:'Montserrat',sans-serif;box-sizing:border-box;">
+  <div style="font-size:24px;color:#2E6CB4;font-weight:600;letter-spacing:1px;margin-bottom:10px;">ROLE-PLAY ACTIVITY &middot; PAIRS &middot; 15 MINUTES</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:#0A2A4D;margin-bottom:36px;">The handoff conversation</div>
+  <div style="background:#fff;border-radius:12px;padding:36px 40px;font-size:25px;line-height:1.6;color:#1C2530;max-width:1300px;">
+    In pairs, one person shares a responsibility they currently carry (at church, work, or home) and practices explaining it clearly enough that their partner could step in and help. Discuss: what makes releasing responsibility hard?
+  </div>
+</section>
+
+<!-- SESSION 6 PRAYER -->
+<section data-label="S6 Prayer" data-speaker-notes="Have each person write a one-sentence prayer for Cornerstone's future on paper or in the Zoom chat. Invite a few to share aloud, then close together in shared prayer. This is the final session — consider closing in communion if appropriate for your setting." style="background:#0A2A4D;display:flex;flex-direction:column;justify-content:center;padding:90px 140px;font-family:'Montserrat',sans-serif;color:#fff;box-sizing:border-box;">
+  <div style="font-size:24px;color:#7CA9DD;font-weight:600;letter-spacing:1px;margin-bottom:14px;">CLOSING PRAYER &middot; 10 MINUTES</div>
+  <div style="font-size:26px;line-height:1.6;color:#E7ECF3;max-width:1200px;margin-bottom:44px;">Write a one-sentence prayer for this church's future. Share aloud (or in the Zoom chat), then close together in shared prayer.</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:32px 40px;">
+    <div style="font-size:24px;color:#7CA9DD;letter-spacing:1px;margin-bottom:10px;">TAKEAWAY</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;">Every leader serves a season. Faithfulness &mdash; not size &mdash; is the measure that matters.</div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section data-label="Closing" data-speaker-notes="Thank the group for completing the six-session series. Mention the full 19-session self-paced study is available online for anyone who wants to go deeper chapter by chapter." style="background:#0A2A4D;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;color:#fff;text-align:center;padding:100px;box-sizing:border-box;">
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:56px;margin-bottom:24px;">Continue the Journey</div>
+  <div style="font-size:24px;color:#B9C4D4;max-width:1000px;line-height:1.7;margin-bottom:40px;">This six-session series covers all nineteen chapters of Cornerstone 2040. For anyone who wants to go deeper, the full chapter-by-chapter study is available on Cornerstone's self-paced learning platform.</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#7CA9DD;">At the center is Christ. Always Christ.</div>
+</section>
+
+</x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:700},&quot;showLogo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Cover Slide&quot;},&quot;logoHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:90,&quot;min&quot;:50,&quot;max&quot;:160,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover Slide&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showLogo: this.props.showLogo ?? true,
+      logoHeight: this.props.logoHeight ?? 90
+    };
+  }
+}
+</script>
+</body>
+</html>
